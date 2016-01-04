@@ -4,7 +4,7 @@ session_start();
 //            $_SESSION["user_id"] = $qry->insert_id;
 if (isset($_SESSION["session_name"])){
      
-    header("Location:./index.php");
+    header("Location:./portal.php");
     exit();   
 }
 
