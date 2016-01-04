@@ -13,9 +13,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	
-	<?php include "donation_store_header_footer.php";
-			include "db_config_values.php";
-	?>
+	<?php include "donation_store_header_footer.php";?>
     
     
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -36,6 +34,12 @@
 
 			<?php 
 			$code= $name= $path= $money_red= $description= $money_recieved= $pieces= "";
+					
+			$servername = "localhost";
+			$username = "root";
+			$password = "";
+			$dbname = "userdata";
+
 			
 			$code = $_GET["problemcode"];
 			// Create connection
@@ -62,6 +66,9 @@
 					$address_= $row["user_address"];
 					$contact_= $row["user_contact_number"];
 				
+			}
+			else{
+				echo "<script> alert('no data found') </script>";
 			}
 			
 
