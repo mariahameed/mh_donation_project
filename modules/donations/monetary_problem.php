@@ -16,7 +16,10 @@ require_once 'web/common.php';
 	<link href="css/custom.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-	<?php include "mm_store_header_footer.php";?>
+	<?php include "mm_store_header_footer.php"
+		include "db_config_values.php";
+
+	;?>
 	
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,12 +44,6 @@ require_once 'web/common.php';
 			
 		if ($_SERVER["REQUEST_METHOD"] == "GET") 
 		{
-			$servername = "localhost";
-			$username = "root";
-			$password = "";
-			$dbname = "userdata";
-
-			
 			$code = $_GET["problemcode"];
 			// Create connection
 			$conn = new mysqli($servername, $username, $password, $dbname);

@@ -6,6 +6,8 @@
 <?php 
 
 		include "mm_store_header_footer.php";
+		include "db_config_values.php";
+
 ?>
 <script src="jquery-1.11.js">		</script>
 
@@ -39,11 +41,6 @@
 
 			<div class="col-md-12">
 				<?php 
-					$servername = "localhost";
-					$username = "root";
-					$password = "";
-					$dbname = "userdata";
-
 					// Create connection
 					$conn = new mysqli($servername, $username, $password, $dbname);
 					// Check connection
