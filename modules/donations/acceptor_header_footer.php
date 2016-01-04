@@ -1,8 +1,5 @@
-<?php
-// Start the session
-session_start();
-?>
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -52,6 +49,7 @@ session_start();
 				
 					<!--<li class="active">  <a href="#" class="header_A">	Donate </a> </li>-->
 					<li  id="metirial_donation"> 	<a href="items_available.php" class="header_A">	Metirial Donations </a>	</li>
+					<li id="insert_monetary_help"> 	<a href="insert_monetary_help.php" class="header_A">	Get Money Donation</a>	</li>
 					<li id="acceptor_reserved_items"> 	<a href="acceptor_reserved_items.php" class="header_A" > Reserved Items </a>	</li>
 					<li id="method"> 	<a href="method.php" class="header_A" >	Method </a>	</li>
 					<li id="store_contact"> 	<a href="store_contact.php" class="header_A" >	Contact Us </a>	</li>
@@ -65,7 +63,7 @@ session_start();
 						</a>
 					</li>
 					<li > 	
-							<a href="../../index.php" class="header_A" onclick="<?php $_SESSION["session_name"]=""?>">	Logout
+							<a href="../../php/logout.php" class="header_A">	Logout
 							<span class="glyphicon glyphicon-log-out"> </span> 
 						</a>
 					</li>	

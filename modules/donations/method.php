@@ -1,9 +1,18 @@
+  <?php
+// Start the session
+session_start();
+if (!isset($_SESSION["user_type"])) {
+	header("Location:../index.php");
+}
+
+?>
 <?php 
 	include "acceptor_header_footer.php";
 ?>
 
 
-  <!DOCTYPE html>
+<!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -22,7 +31,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1 style="text-align:center">Company Name </h1>
+				<h1 style="text-align:center"> </h1>
 				<br>
 				<hr>
 				<h4 style="text-align:center"> Donation Method </h4>

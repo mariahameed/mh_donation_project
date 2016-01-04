@@ -1,4 +1,13 @@
+<?php
+// Start the session
+session_start();
+if (!isset($_SESSION["user_type"])) {
+	header("Location:../index.php");
+}
+
+?>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -62,8 +71,8 @@
 
 	<div class="container">
 		<div class="row" style="margin-top:0px">
-			<div class="col-md-12">
-				<h1 style="text-align:center">Company Name </h1>
+			<div class="col-md-12" style="height:100px;">
+				
 				<hr>
 			</div>
 		</div>
@@ -129,7 +138,7 @@
 
 
 					echo '<form method="post" action="sent_to_acceptor.php">
-							<input type="submit" name="submit" value="Sent"  style="position:absolute; right:2%;" 	onclick="confirm_deletion()" class="btn btn-success">
+							<input type="submit" name="submit" value="Sent"  style="position:absolute; right:2%;margin-top:2%;" 	onclick="confirm_deletion()" class="btn btn-success">
 							<input type="text"   id="acceptor_data" name="acceptor_data"  style="display:none" 
 							value='.
 							$sent_items.'>

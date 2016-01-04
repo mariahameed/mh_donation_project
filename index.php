@@ -2,9 +2,9 @@
 //seesion verfication if user already login
 session_start();
 //            $_SESSION["user_id"] = $qry->insert_id;
-if (isset($_SESSION["session_name"]) && $_SESSION["session_name"]!=""){
+if (isset($_SESSION["session_name"])){
      
-    header("Location:./portal.php");
+    header("Location:./index.php");
     exit();   
 }
 

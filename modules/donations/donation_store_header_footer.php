@@ -1,8 +1,5 @@
-<?php
-// Start the session
-session_start();
-?>
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -54,19 +51,19 @@ session_start();
 					<li  id="metirial_donation"> 	<a href="metirial_donation.php" class="header_A">	Metirial Donations </a>	</li>
 					<li  id="monetary_help"> 	<a href="monetary_help.php" class="header_A">	Monetaty Donations </a>	</li>
 					<li id="insert_monetary_help"> 	<a href="insert_monetary_help.php" class="header_A">	Insert Donation</a>	</li>
+					<li id="pending_monetary_help"> 	<a href="pending_monetary_help.php" class="header_A">	Validate Pending</a>	</li>
 					<li id="reservations"> 	<a href="reservations.php" class="header_A">	Resrvations</a>	</li>
 					<li id="show_comments"> 	<a href="show_comments.php" class="header_A">	Show Comments</a>	</li>
 					<li id="user_name_display"> 	
 						<a class="header_A"  style="color:#58ACFA">
 							<?php 
 								if (isset($_SESSION["user_first_name_"]) && isset($_SESSION["user_last_name_"])) {
-								# code...
 								echo '<b>'.$_SESSION["user_first_name_"]." ".$_SESSION["user_last_name_"].'</b>';
 							} ?>	
 						</a>	
 					</li>					
 					<li > 	
-							<a href="../../index.php" class="header_A" onclick="<?php $_SESSION["session_name"]=""?>">	Logout
+							<a href="../../php/logout.php" class="header_A">	Logout
 							<span class="glyphicon glyphicon-log-out"> </span> 
 						</a>
 					</li>	

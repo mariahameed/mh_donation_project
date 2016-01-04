@@ -4,11 +4,11 @@ session_start();
 if (!isset($_SESSION["user_type"])) {
 	header("Location:../index.php");
 }
-
 ?>
 <?php
 require_once 'web/common.php';
 ?>
+
 
 <!DOCTYPE html>
 
@@ -25,14 +25,10 @@ require_once 'web/common.php';
 	<link href="css/custom.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-	<?php 
-		if($_SESSION["user_type"] == "admin")
-			include "donation_store_header_footer.php";
-		else if($_SESSION["user_type"] == "donor")
-			include "donor_header_footer.php";
-
+	<?php include "donation_store_header_footer.php";
 		include "db_config_values.php";
-	?>
+
+	;?>
 	
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -117,15 +113,8 @@ require_once 'web/common.php';
 
 					</h3>
 					<h4 style="text-align:center">Rs <?php echo $money_red;?> required</h4>
-					<h4 style="text-align:center">Money recieved: <?php echo $money_recieved;?></h4>
 					<h5 style="text-align:center">Contact on: <?php echo $contact;?></h5>
 					<br>
-
-					  <div class="progress" style="border:1px solid #aaa">
-					    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo  (($money_recieved/$money_red)*100).'%'; ?>">
-						    <?php echo  (($money_recieved/$money_red)*100)."%"; ?> recieved
-					    </div>
-					  </div>
 
 					<hr>
 					<p >
@@ -135,27 +124,11 @@ require_once 'web/common.php';
 					<hr>
 					<br>					
 					<?php 
-					if ($_SESSION["user_type"] == "admin") {
-						# code...
 						echo '
-						<form method="post" action="money_recieved.php">
+						<form method="post" action="validation_of_problem.php">
 							<input type="text" name="problemcode" value="'.$_GET["problemcode"].'" style="display:none">
-							<label for="money_recieved">Money recieved:  </label>
-							<input type="number" class="form-control" value=0 name="money_recieved"><br/>
-							<input type="submit" class="btn btn-success" value="Save">
+							<input type="submit" class="btn btn-success" value="Validate">
 						</form>';
-
-					}
-					else if ($_SESSION["user_type"] == "donor") {
-						echo '
-						<form method="post" action="web/payment.php">
-							<input type="text" name="problemcode" value="'.$_GET["problemcode"].'" style="display:none">
-							<label for="money_recieved">Please enter the amount you want to donate(in Rupees):  </label>
-							<input type="number" class="form-control" value=0 name="amount"><br/>
-							<input type="submit" class="btn btn-success" value="Donate">
-						</form>';
-					}
-
 					?>
 				</div>
 			</div>

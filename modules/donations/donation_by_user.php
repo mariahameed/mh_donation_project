@@ -1,4 +1,12 @@
+<?php
+// Start the session
+session_start();
+if (!isset($_SESSION["user_type"])) {
+	header("Location:../index.php");
+}
+?>
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -13,7 +21,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	
-	<?php include "donation_store_header_footer.php";?>
+	<?php include "donation_store_header_footer.php";
+		include "db_config_values.php";
+		?>
     
     
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -34,12 +44,6 @@
 
 			<?php 
 			$code= $name= $path= $money_red= $description= $money_recieved= $pieces= "";
-					
-			$servername = "localhost";
-			$username = "root";
-			$password = "";
-			$dbname = "userdata";
-
 			
 			$code = $_GET["problemcode"];
 			// Create connection
@@ -86,7 +90,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					
-					<h1 style="text-align:center">Company Name </h1>
+					<h1 style="text-align:center"> </h1>
 					<br>
 					<hr>
 

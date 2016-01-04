@@ -14,11 +14,7 @@ if (!isset($_SESSION["user_type"])) {
 <title>Donate What You Want</title>
 <?php 
 
-		if($_SESSION["user_type"] == "admin")
-			include "donation_store_header_footer.php";
-		else if($_SESSION["user_type"] == "donor")
-			include "donor_header_footer.php";
-
+		include "donation_store_header_footer.php";
 		include "db_config_values.php";
 
 ?>
@@ -33,7 +29,6 @@ if (!isset($_SESSION["user_type"])) {
 		<link rel="stylesheet" type="text/css" href="css/default.css" />
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
 		<script src="js/modernizr.custom.js"></script>
-
 </head>
 
 
@@ -61,7 +56,7 @@ if (!isset($_SESSION["user_type"])) {
 						die("Connection failed: " . $conn->connect_error);
 					} 
 					
-					$sql = "select problem_name,money_required,money_recieved ,picture,problem_id from monetary_donation where validated=1";
+					$sql = "select problem_name,money_required,money_recieved ,picture,problem_id from monetary_donation where validated=0";
 					$result = $conn->query($sql);
 										
 					echo '<div class="container demo-3"> <ul class="grid cs-style-4">';
@@ -76,7 +71,7 @@ if (!isset($_SESSION["user_type"])) {
 									<figure>
 										<div><img src="pics/'.$row["picture"].'" style="" alt="image cant be displayed due to some issue"></div>
 										<figcaption>
-											<form action="monetary_problem.php" method="get"> 
+											<form action="validate_problem.php" method="get"> 
 												<h3>'.$row["problem_name"].'</h3>
 												<span>Requires PKR '.$row["money_required"].'</span>
 												<input type="text" name="problemcode" value='.$row["problem_id"].' style="display:none";> 
@@ -102,7 +97,7 @@ if (!isset($_SESSION["user_type"])) {
 		$(document).ready(
 			function()
 			{
-				document.getElementById("monetary_help").className = "active";
+				document.getElementById("pending_monetary_help").className = "active";
 			}
 		)
 	</script>

@@ -1,6 +1,7 @@
 <?php
 
 require_once 'common.php';
+include "../db_config_values.php";
 $var_value = $_POST['amount'];
 $custom_message = $_POST['custom_mess'];
 
@@ -22,13 +23,6 @@ if (isset($_POST['stripeToken']))
     catch(Stripe_CardError $e){
         
     }
-
-
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "userdata";
-
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     // Check connection

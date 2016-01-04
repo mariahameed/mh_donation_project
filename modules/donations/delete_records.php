@@ -1,6 +1,9 @@
 <?php
 // Start the session
 session_start();
+if (!isset($_SESSION["user_type"])) {
+	header("Location:../index.php");
+}
 ?>
 
 <?php

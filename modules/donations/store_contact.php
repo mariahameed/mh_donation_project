@@ -1,4 +1,12 @@
+<?php
+// Start the session
+session_start();
+if (!isset($_SESSION["user_type"])) {
+	header("Location:../index.php");
+}
+?>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -6,7 +14,12 @@
 
 
 <?php 
-	include "acceptor_header_footer.php";
+
+		if($_SESSION["user_type"] == "acceptor")
+			include "acceptor_header_footer.php";
+		else if($_SESSION["user_type"] == "donor")
+			include "donor_header_footer.php";
+
 	include "db_config_values.php";
 ?>
 
@@ -18,7 +31,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				
-				<h1 style="text-align:center">Company Name </h1>
+				<h1 style="text-align:center"> </h1>
 				<br>
 				<hr>
 				<h4 style="text-align:center">Contact Us </h4>
@@ -99,8 +112,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	}
 	else
 	{
-		$subject = $_POST["cl_subject"];
-		$comment = $_POST["cl_comments"];
+		$subject = filter_var($_POST["cl_subject"], FILTER_SANITIZE_STRING);
+		$comment = filter_var($_POST["cl_comments"], FILTER_SANITIZE_STRING);
 		
 		$sql = "insert into visitor_comment(visitor_name, visitor_email, visitor_subject, visitor_message) values ('".$_SESSION["user_first_name_"]."','".$_SESSION["user_email_"]."', '$subject', '$comment') ";
 	

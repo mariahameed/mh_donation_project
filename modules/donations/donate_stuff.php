@@ -1,4 +1,14 @@
+<?php
+// Start the session
+session_start();
+
+if (!isset($_SESSION["user_type"])) {
+  header("Location:../index.php");
+}
+
+?>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -45,7 +55,7 @@
         <div class="row">
             <div class="col-md-12">
                 
-                <h1 style="text-align:center">Company Name </h1>
+                <h1 style="text-align:center"> </h1>
                 <br>
                 <hr>
                 <h4 style="text-align:center">Insert New Monetary Problem </h4>
@@ -229,7 +239,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     # code...
       for($ii=0 ; $ii<$total_donations ; $ii++)
       {
-          $name = $_POST["p_name".$ii];
+          $name = filter_var($_POST["p_name".$ii], FILTER_SANITIZE_STRING); 
           $category = $_POST["select_cat".$ii];
           $pic = "pics/" .$_POST["files".$ii];
 

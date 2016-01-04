@@ -9,7 +9,9 @@ if (!isset($_SESSION["session_name"])){
 else{
      $response["success"]=1;
     session_destroy();
+//    unset($_COOKIE["user_id"]);
+//    setcookie( "user_id", "", time()- 60, "/","", 0);
+////    setcookie("user_id", "", time() - 3600);
 }
-header("Location:../index.php");
-
+echo json_encode($response);
 ?>

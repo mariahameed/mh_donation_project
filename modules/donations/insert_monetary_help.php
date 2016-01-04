@@ -1,10 +1,22 @@
+<?php
+// Start the session
+session_start();
+if (!isset($_SESSION["user_type"])) {
+	header("Location:../index.php");
+}
+?>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Donate What You Want</title>
 <?php 
-	include "donation_store_header_footer.php";
+		if($_SESSION["user_type"] == "acceptor")
+			include "acceptor_header_footer.php";
+		else if($_SESSION["user_type"] == "admin")
+			include "donation_store_header_footer.php";
+
 	include "db_config_values.php";
 ?>
 <script src="jquery-1.11.js">		</script>
@@ -17,7 +29,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				
-				<h1 style="text-align:center">Company Name </h1>
+				<h1 style="text-align:center"> </h1>
 				<br>
 				<hr>
 				<h4 style="text-align:center">Insert New Monetary Problem </h4>
@@ -134,14 +146,21 @@ if ($_SERVER["REQUEST_METHOD"] == "GET")
 	}
 
 	else{
-		$name = $_GET["p_name"];
+		$name = filter_var($_GET["p_name"], FILTER_SANITIZE_STRING);
 		$money = $_GET["money_req"];
 		$pic = $_GET["files"];
-		$comment = $_GET["feedback_MSG"];
-		$contact = $_GET["p_contact"];
+		$comment = filter_var($_GET["feedback_MSG"], FILTER_SANITIZE_STRING);
+		$contact = filter_var($_GET["p_contact"], FILTER_SANITIZE_STRING);
+		$validate_value = 0;
+
+		if($_SESSION["user_type"] == "acceptor")
+			$validate_value = 0;
+		else if($_SESSION["user_type"] == "admin")
+			$validate_value = 1;
+
 		
-		
-		$sql = "insert into monetary_donation( problem_name, money_required, picture, problem_description, acceptor_contact) values ('$name','$money', '$pic', '$comment','$contact') ";
+
+		$sql = "insert into monetary_donation( problem_name, money_required, picture, problem_description, acceptor_contact,validated) values ('$name','$money', '$pic', '$comment','$contact',$validate_value) ";
 		if ($conn->query($sql) === TRUE) {
 	    echo "<script> alert('New record created successfully.') </script>";
 	    echo "<script>window.location = 'insert_monetary_help.php'; </script>";
