@@ -5,6 +5,7 @@
 <title>Donate What You Want</title>
 <?php 
     include "donor_header_footer.php";
+    include "db_config_values.php";
 ?>
 <script src="jquery-1.11.js">       </script>
 
@@ -201,11 +202,6 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "userdata";
-
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     // Check connection

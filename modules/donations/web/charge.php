@@ -20,6 +20,7 @@ if (isset($_POST['stripeToken']))
         ]);
     }
     catch(Stripe_CardError $e){
+        
     }
 
 

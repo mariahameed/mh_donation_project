@@ -7,6 +7,7 @@
 
 <?php 
 	include "acceptor_header_footer.php";
+	include "db_config_values.php";
 ?>
 
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
@@ -68,10 +69,6 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "userdata";
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);

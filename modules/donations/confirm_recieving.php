@@ -5,6 +5,7 @@
 <title>Donate What You Want</title>
 <?php 
 include "acceptor_header_footer.php";
+include "db_config_values.php";
 ?>
 
 <script src="jquery.js"></script>
@@ -26,11 +27,6 @@ include "acceptor_header_footer.php";
 		<div class="row">
 			<div class="col-md-12">
 				<?php 
-					$servername = "localhost";
-					$username = "root";
-					$password = "";
-					$dbname = "userdata";
-
 					// Create connection
 					$conn = new mysqli($servername, $username, $password, $dbname);
 					// Check connection

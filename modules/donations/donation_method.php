@@ -5,6 +5,7 @@
 <title>Insert title here</title>
 <?php 
 	include "donor_header_footer.php";
+	
 ?>
 
 <style>
